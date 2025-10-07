@@ -66,8 +66,7 @@ proyecto_capacitaciones/
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/tu-usuario/gestion-capacitaciones.git
-cd gestion-capacitaciones
+git clone https://github.com/CR-Rivcon/M5_Portafolio__Skillnest_Cristopher_Rivera.git
 ```
 
 2. **Crear la base de datos**
@@ -123,16 +122,8 @@ mysql -u root -p gestion_capacitaciones < 04_consultas/01_consultas_basicas.sql
 
 ## 👨‍💻 Autor
 
-Proyecto desarrollado como parte del portafolio de competencias en Gestión de Bases de Datos Relacionales.
+Proyecto desarrollado como parte del portafolio de competencias en Gestión de Bases de Datos Relacionales por Cristopher Rivera.
 
-## 📝 Licencia
 
-Este proyecto es de uso educativo y demostrativo.
-
-## 📞 Contacto
-
-Para consultas o sugerencias sobre este proyecto, por favor contactar a través del repositorio de GitHub.
-
----
 
 **Última actualización**: Octubre 2025
