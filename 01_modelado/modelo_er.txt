@@ -1,0 +1,71 @@
+MODELO ENTIDAD-RELACIÓN
+Sistema de Gestión de Capacitaciones
+
+ENTIDADES:
+
+1. DEPARTAMENTOS
+   - id_departamento (PK)
+   - nombre
+   - descripcion
+
+2. EMPLEADOS
+   - id_empleado (PK)
+   - rut (UNIQUE)
+   - nombre
+   - apellido
+   - email (UNIQUE)
+   - cargo
+   - fecha_ingreso
+   - id_departamento (FK -> DEPARTAMENTOS)
+
+3. ENTIDADES_CAPACITADORAS
+   - id_entidad (PK)
+   - nombre
+   - tipo (OTEC, Universidad, Consultora, Interna)
+   - contacto
+   - email
+   - telefono
+   - especialidad
+
+4. CAPACITACIONES
+   - id_capacitacion (PK)
+   - codigo (UNIQUE)
+   - nombre
+   - descripcion
+   - tipo (Técnicas, Habilidades Blandas, Mutual, Optativas, Normativas)
+   - modalidad (Presencial, Online Sincrónico, Online Asincrónico)
+   - duracion_horas
+   - fecha_inicio
+   - fecha_fin
+   - cupos_maximos
+   - id_entidad (FK -> ENTIDADES_CAPACITADORAS)
+
+5. PARTICIPACIONES
+   - id_participacion (PK)
+   - id_empleado (FK -> EMPLEADOS)
+   - id_capacitacion (FK -> CAPACITACIONES)
+   - fecha_inscripcion
+   - estado (Inscrito, En Curso, Completado, Abandonado)
+   - porcentaje_asistencia
+   - fecha_completado
+   - observaciones
+
+RELACIONES:
+
+- DEPARTAMENTOS (1) ----< (N) EMPLEADOS
+  Un departamento tiene muchos empleados
+
+- EMPLEADOS (1) ----< (N) PARTICIPACIONES
+  Un empleado puede participar en muchas capacitaciones
+
+- CAPACITACIONES (1) ----< (N) PARTICIPACIONES
+  Una capacitación puede tener muchos participantes
+
+- ENTIDADES_CAPACITADORAS (1) ----< (N) CAPACITACIONES
+  Una entidad puede dictar muchas capacitaciones
+
+CARDINALIDADES:
+- 1:N entre DEPARTAMENTOS y EMPLEADOS
+- 1:N entre EMPLEADOS y PARTICIPACIONES
+- 1:N entre CAPACITACIONES y PARTICIPACIONES
+- 1:N entre ENTIDADES_CAPACITADORAS y CAPACITACIONES

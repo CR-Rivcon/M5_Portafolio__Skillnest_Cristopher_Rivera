@@ -1,0 +1,52 @@
+MODELO RELACIONAL
+Sistema de Gestión de Capacitaciones
+
+ESQUEMA RELACIONAL:
+
+DEPARTAMENTOS (id_departamento, nombre, descripcion)
+  PK: id_departamento
+
+EMPLEADOS (id_empleado, rut, nombre, apellido, email, cargo, fecha_ingreso, id_departamento)
+  PK: id_empleado
+  FK: id_departamento -> DEPARTAMENTOS(id_departamento)
+  UNIQUE: rut, email
+
+ENTIDADES_CAPACITADORAS (id_entidad, nombre, tipo, contacto, email, telefono, especialidad)
+  PK: id_entidad
+  UNIQUE: email
+
+CAPACITACIONES (id_capacitacion, codigo, nombre, descripcion, tipo, modalidad, duracion_horas, 
+                fecha_inicio, fecha_fin, cupos_maximos, id_entidad)
+  PK: id_capacitacion
+  FK: id_entidad -> ENTIDADES_CAPACITADORAS(id_entidad)
+  UNIQUE: codigo
+
+PARTICIPACIONES (id_participacion, id_empleado, id_capacitacion, fecha_inscripcion, estado, 
+                 porcentaje_asistencia, fecha_completado, observaciones)
+  PK: id_participacion
+  FK: id_empleado -> EMPLEADOS(id_empleado)
+  FK: id_capacitacion -> CAPACITACIONES(id_capacitacion)
+  UNIQUE: (id_empleado, id_capacitacion)
+
+RESTRICCIONES DE INTEGRIDAD:
+
+1. Claves Primarias:
+   - Todas las tablas tienen clave primaria auto-incremental
+
+2. Claves Foráneas:
+   - ON DELETE RESTRICT: No permite eliminar si hay dependencias
+   - ON UPDATE CASCADE: Propaga actualizaciones
+
+3. Restricciones CHECK:
+   - porcentaje_asistencia BETWEEN 0 AND 100
+   - duracion_horas > 0
+   - cupos_maximos > 0
+   - fecha_fin >= fecha_inicio
+
+4. Restricciones UNIQUE:
+   - rut de empleados
+   - email de empleados
+   - codigo de capacitaciones
+
+5. Restricciones NOT NULL:
+   - Campos obligatorios en todas las entidades
